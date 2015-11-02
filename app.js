@@ -5,11 +5,12 @@ var cheerio = require('cheerio');
 app = express();
 
 app.use('/static', express.static(__dirname + '/public'));
+app.set('views', __dirname + '/views')
 app.set('view engine', 'jade');
 
 app.get('/', function(req, res)
 {
-	res.render('static/index.html');
+	res.render('index.jade');
 });
 
 var server = app.listen(3000, function () {
