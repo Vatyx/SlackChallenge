@@ -1,5 +1,15 @@
 console.log("hi there");
 
-$.get('/query', {url: "http://www.example.com"}, function(data) { 
-		console.log(data.body); 
+$("#field").keyup(function(event){
+    if(event.keyCode == 13){
+        $("#submit").click();
+    }
 });
+
+function getSource()
+{
+	$.get('/query', {url: "asdf"}, function(data) { 
+			console.log(data.body);
+			//$(".html").text(data.body);
+	});
+}
