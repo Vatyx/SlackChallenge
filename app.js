@@ -25,6 +25,7 @@ app.get('/query', function(req, res)
 	 	{
 	 		console.log(body);
 	 		res.status(200);
+	 		//body = "<!DOCTYPE html><div>hi</div>";
 	 		res.json({"body": body});
 	 	}
 	 	else

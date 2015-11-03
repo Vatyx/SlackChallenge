@@ -11,9 +11,9 @@ $("#field").keyup(function(event){
 
 function getSource()
 {
-	$.ajax({url: "/query", data: {url: "http://www.reddit.com"}, success: function(data, status)
+	$.ajax({url: "/query", data: {url: $("#field").val()}, success: function(data, status)
 	{
-		console.log(data.body);
+		//console.log(data.body);
 		source = data.body;
 		$('#codehere').text(source);
 		computeTags();
@@ -32,7 +32,7 @@ function computeTags()
 	{
 		if(source[i] === "<")
 		{
-			if(source[i+1] !== "/" || source[i+1] !== "!")
+			if(source[i+1] !== "/" && source[i+1] !== "!")
 			{
 				foundTag = true;
 			}
