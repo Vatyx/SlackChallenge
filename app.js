@@ -21,10 +21,16 @@ app.get('/query', function(req, res)
 	console.log(url); 
 	var payload = "";
 	request(url, function (error, response, body) {
- 		console.log(error)
- 		payload = body;
- 		console.log(payload);
- 		res.json({"body": payload});
+	 	if(response!=undefined)
+	 	{
+	 		console.log(body);
+	 		res.status(200);
+	 		res.json({"body": body});
+	 	}
+	 	else
+	 	{
+	 		res.status(500).send();
+	 	}
 	});
 	console.log("got here");
 })
