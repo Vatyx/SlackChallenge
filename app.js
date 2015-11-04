@@ -26,7 +26,8 @@ app.get('/query', function(req, res)
 	 		console.log(body);
 	 		res.status(200);
 	 		//body = "<!DOCTYPE html><div>hi</div>";
-	 		res.json({"body": body});
+	 		payload = computeTagsCount(body);
+	 		res.json({"body": body, "count": payload});
 	 	}
 	 	else
 	 	{
@@ -35,6 +36,45 @@ app.get('/query', function(req, res)
 	});
 	console.log("got here");
 })
+
+function computeTagsCount(source)
+{	
+	var tagsCount = {};
+	var foundTag = false;
+	var currentTag = "";
+	for(var i = 0; i < source.length; i++)
+	{
+		if(source[i] === "<")
+		{
+			if(source[i+1] !== "/" && source[i+1] !== "!")
+			{
+				foundTag = true;
+			}
+			continue;
+		}
+		else if(foundTag)
+		{
+			if(source[i] === ">" || source[i] === " ")
+			{
+				foundTag = false;
+				if(tagsCount[currentTag] === undefined)
+				{
+					tagsCount[currentTag] = 1;
+				}
+				else
+				{
+					tagsCount[currentTag]++;
+				}
+				currentTag = "";
+			}
+			else
+			{
+				currentTag = currentTag.concat(source[i]);
+			}
+		}
+	}
+	return tagsCount;
+}
 
 var server = app.listen(3000, function () {
   var host = server.address().address;

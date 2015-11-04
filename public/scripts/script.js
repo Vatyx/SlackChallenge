@@ -13,10 +13,9 @@ function getSource()
 {
 	$.ajax({url: "/query", data: {url: $("#field").val()}, success: function(data, status)
 	{
-		//console.log(data.body);
 		source = data.body;
 		$('#codehere').text(source);
-		computeTags();
+		tagsCount = data.count;
 	}, 
 	error: function()
 	{
