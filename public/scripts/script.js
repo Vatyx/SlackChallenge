@@ -1,10 +1,9 @@
-console.log("hi there");
-
 var source = "";
 var tagsCount = {};
 
 $("#field").keyup(function(event){
     if(event.keyCode === 13){
+    	console.log("I'm in here");
         $("#submit").click();
     }
 });

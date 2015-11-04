@@ -25,7 +25,6 @@ app.get('/query', function(req, res)
 	 	{
 	 		//console.log(body);
 	 		res.status(200);
-	 		//body = "<!DOCTYPE html><div>hi</div>";
 	 		payload = computeTagsCount(body);
 	 		res.json({"body": body, "count": payload});
 	 	}
@@ -43,44 +42,23 @@ function computeTagsCount(source)
 	var foundTag = false;
 	var currentTag = "";
 
-	var alpha = /<\w+/g;
+	var alpha = /(?:<)(\w+)/g;
+
 	var mine = alpha.exec(source);
-	for(var i = 0; i < mine.length; i++)
+	while(mine != null)
 	{
-		console.log(mine[i]);
+		console.log(mine[1]);
+		if(tagsCount[mine[1]] === undefined)
+		{
+			tagsCount[mine[1]] = 1;
+		}
+		else
+		{
+			tagsCount[mine[1]]++;
+		}
+		var mine = alpha.exec(source);
 	}
 
-	for(var i = 0; i < source.length; i++)
-	{
-		if(source[i] === "<")
-		{
-			if(source[i+1] !== "/" && source[i+1] !== "!")
-			{
-				foundTag = true;
-			}
-			continue;
-		}
-		else if(foundTag)
-		{
-			if(source[i] === ">" || source[i] === " ")
-			{
-				foundTag = false;
-				if(tagsCount[currentTag] === undefined)
-				{
-					tagsCount[currentTag] = 1;
-				}
-				else
-				{
-					tagsCount[currentTag]++;
-				}
-				currentTag = "";
-			}
-			else
-			{
-				currentTag = currentTag.concat(source[i]);
-			}
-		}
-	}
 	return tagsCount;
 }
 
