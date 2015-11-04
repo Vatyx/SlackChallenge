@@ -23,7 +23,7 @@ app.get('/query', function(req, res)
 	request(url, function (error, response, body) {
 	 	if(response!=undefined)
 	 	{
-	 		console.log(body);
+	 		//console.log(body);
 	 		res.status(200);
 	 		//body = "<!DOCTYPE html><div>hi</div>";
 	 		payload = computeTagsCount(body);
@@ -42,6 +42,14 @@ function computeTagsCount(source)
 	var tagsCount = {};
 	var foundTag = false;
 	var currentTag = "";
+
+	var alpha = /<\w+/g;
+	var mine = alpha.exec(source);
+	for(var i = 0; i < mine.length; i++)
+	{
+		console.log(mine[i]);
+	}
+
 	for(var i = 0; i < source.length; i++)
 	{
 		if(source[i] === "<")
