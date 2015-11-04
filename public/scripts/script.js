@@ -12,13 +12,13 @@ function getSource()
 {
 	$('.header').addClass('moveup');
 	$('.box').addClass('open');
-
 	$.ajax({url: "/query", data: {url: $("#field").val()}, success: function(data, status)
 	{
 		source = data.body;
 		console.log(source);
 		$('#codehere').text(source);
 		tagsCount = data.count;
+		addButtons();
 	}, 
 	error: function()
 	{
@@ -61,4 +61,15 @@ function computeTags()
 			}
 		}
 	}
+}
+
+function addButtons()
+{
+	$buttonContainer = $('#buttonContainer');
+	var key;
+	for(key in tagsCount)
+	{
+		$buttonContainer.append("<div class='tagButton'><div class='tagButtonText'>" + key + "</div> <div class='tagButtonText'>" + tagsCount[key] + " times</div></div>");
+	}
+	$buttonContainer.append("<div class='tagButton empty'></div>")
 }
