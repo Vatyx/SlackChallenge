@@ -66,10 +66,18 @@ function computeTags()
 function addButtons()
 {
 	$buttonContainer = $('#buttonContainer');
+	$buttonContainer.empty();
+
 	var key;
 	for(key in tagsCount)
 	{
-		$buttonContainer.append("<div class='tagButton'><div class='tagButtonText'>" + key + "</div> <div class='tagButtonText'>" + tagsCount[key] + " times</div></div>");
+		$buttonContainer.append('<div class="tagButton" onclick="highlight(\'' + key.toString() + '\')"><div class="tagButtonText">' + key + '</div> <div class="tagButtonText">' + tagsCount[key] + ' times</div></div>');
 	}
 	$buttonContainer.append("<div class='tagButton empty'></div>")
+}
+
+function highlight(tag)
+{
+	$("#codehere").unhighlight();
+	$("#codehere").highlight(["<" + tag + ">", "<" + tag, "</" + tag + ">"]);
 }

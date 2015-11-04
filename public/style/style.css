@@ -31,7 +31,7 @@ body {
 }
 
 .tags {
-	height: 200px;
+	height: 225px;
 	margin: 50px auto 20px auto;
 	background-color: white;
 	display: flex;
@@ -63,6 +63,7 @@ body {
 	align-self: left;
 	flex-shrink: 0;
 	transition: all .2s ease-in-out;
+  	cursor:pointer;
 }
 
 .tagButtonText {
@@ -79,6 +80,11 @@ body {
 
 .tagButton:hover {
 	transform: scale(1.1);
+}
+
+.highlight {
+	color: blue;
+	background-color: #FFFF88;
 }
 
 #title {

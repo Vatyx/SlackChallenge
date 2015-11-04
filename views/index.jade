@@ -1,22 +1,19 @@
 doctype html
 html(lang="en")
 	head
-		link(rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/default.min.css")
 		link(href='http://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css')
 		link(rel="stylesheet" href="../style/style.css")
-		title="Hi"
+		title="Source Highlighter"
 	body
-		div.container
-			h1#title Source Highlighter!
-			div.style-1
+		.header
+			#title.headeritem Source Highlighter!
+			.style-1.headeritem
 				input#field(type="text" placeholder="Enter your url here!")
-			div#submit.mybtn.unselectable(onclick="getSource()") Get the Source!
+			#submit.mybtn.unselectable.headeritem(onclick="getSource()") Get the Source!
+		#codehere.box
+		#buttonContainer.box.tags
 		
-		
-		div.containerCode
-			div#codehere
-			div#tagshere
-
 		script(src='https://code.jquery.com/jquery-2.1.4.min.js')
+		script(src='../scripts/highlight.js')
 		script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous")
 		script(src='../scripts/script.js')
