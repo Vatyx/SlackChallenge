@@ -11,9 +11,13 @@ $("#field").keyup(function(event){
 
 function getSource()
 {
+	$('.header').addClass('moveup');
+	$('.box').addClass('open');
+
 	$.ajax({url: "/query", data: {url: $("#field").val()}, success: function(data, status)
 	{
 		source = data.body;
+		console.log(source);
 		$('#codehere').text(source);
 		tagsCount = data.count;
 	}, 

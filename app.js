@@ -11,7 +11,7 @@ app.set('view engine', 'jade');
 app.get('/', function(req, res)
 {
 	console.log("In base");
-	res.render('index.jade');
+	res.render('test.jade');
 });
 
 app.get('/query', function(req, res)
