@@ -9,11 +9,15 @@ html(lang="en")
 	body
 		.header
 			#title.headeritem Source Highlighter!
+			
 			.style-1.headeritem
 				input#field(type="text" autofocus="autofocus" placeholder="Enter your url here! (e.g. example.com)")
 				.tooltip Whoops! That's not a proper URL!
+
 			#submit.mybtn.unselectable.headeritem(onclick="getSource()") Get the Source!
+
 		#buttonContainer.box.tags
+
 		#codehere.box
 			pre#precode
 		
