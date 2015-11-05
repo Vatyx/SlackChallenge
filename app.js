@@ -1,7 +1,5 @@
 var express = require('express');
 var request = require('request');
-var cheerio = require('cheerio');
-var pd = require('pretty-data').pd;
 var html = require('html');
 
 app = express();
