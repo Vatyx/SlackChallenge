@@ -27,6 +27,7 @@ function getSource()
 		$('#codehere').text(source);
 		tagsCount = data.count;
 		addButtons();
+		$('body,html').animate({scrollTop: 156}, 800); 
 	}, 
 	error: function()
 	{
