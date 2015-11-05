@@ -2,6 +2,7 @@ var express = require('express');
 var request = require('request');
 var cheerio = require('cheerio');
 var pd = require('pretty-data').pd;
+var html = require('html');
 
 app = express();
 
@@ -31,10 +32,9 @@ app.get('/query', function(req, res)
 	request(url, function (error, response, body) {
 	 	if(response!=undefined)
 	 	{
-	 		//console.log(body);
 	 		res.status(200);
 	 		payload = computeTagsCount(body);
-	 		body = pd.xml(body);
+	 		body = html.prettyPrint(body, {indent_size: 4});
 	 		res.json({"body": body, "count": payload});
 	 	}
 	 	else
