@@ -19,8 +19,13 @@ app.get('/', function(req, res)
 app.get('/query', function(req, res)
 {
 	console.log("In query");
+	
 	var url = req.query.url;
-	console.log(url); 
+	if (!url.match(/^[a-zA-Z]+:\/\//))
+	{
+	    url = 'http://' + url;
+	}
+
 	var payload = "";
 	request(url, function (error, response, body) {
 	 	if(response!=undefined)

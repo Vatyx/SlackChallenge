@@ -10,8 +10,16 @@ $("#field").keyup(function(event){
 
 function getSource()
 {
-	$('.header').addClass('moveup');
-	$('.box').addClass('open');
+	if(!$('.box').hasClass('open'))
+	{
+		$('.header').addClass('moveup');
+		$('.box').addClass('open');
+	}
+	else
+	{
+		//$('.box').addClass('rotate');
+	}
+		
 	$.ajax({url: "/query", data: {url: $("#field").val()}, success: function(data, status)
 	{
 		source = data.body;
