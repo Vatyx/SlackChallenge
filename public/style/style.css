@@ -4,6 +4,7 @@ html,body {
 	margin: 0;
 	position: relative;
 	background-color: #1abc9c;
+	/*overflow-x: hidden;*/
 }
 
 .header {
@@ -17,7 +18,7 @@ html,body {
 	text-align: center;
 	width: 100%;
 	background-color: white;
-	padding: 10px;
+	padding: 15px 0;
 }
 
 @media only screen and (max-width: 1270px)
