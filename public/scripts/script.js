@@ -15,7 +15,7 @@ function getSource()
 		if(!$('.box').hasClass('open'))
 		{
 			source = data.body;
-			$('#codehere').text(source);
+			$('#precode').text(source);
 			tagsCount = data.count;
 			addButtons();
 			$('body,html').animate({scrollTop: $('#buttonContainer').position().top +50}, 500);
@@ -29,59 +29,26 @@ function getSource()
 			setTimeout(function()
 			{	
 				source = data.body;
-				$('#codehere').text(source);
+				$('#precode').text(source);
 				tagsCount = data.count;
 				addButtons();
 				
 				$('body,html').animate({scrollTop: $('#buttonContainer').position().top +50}, 500);
 				$('.box').removeClass('animated bounceOutRight');
 				$('.box').addClass('animated bounceInLeft');
-			}, 1000);
+			}, 500);
 		}
 	}, 
 	error: function()
 	{
 		console.log("Oh shucks an error");
-		// $('#field').get(0).type = "textwrong";
-		// setTimeout(function() { $('#field').get(0).type = "text"; },1000);
-	}});
-}
 
-function computeTags()
-{	
-	var foundTag = false;
-	var currentTag = "";
-	for(var i = 0; i < source.length; i++)
-	{
-		if(source[i] === "<")
+		$('.tooltip').addClass('open');
+		setTimeout(function()
 		{
-			if(source[i+1] !== "/" && source[i+1] !== "!")
-			{
-				foundTag = true;
-			}
-			continue;
-		}
-		else if(foundTag)
-		{
-			if(source[i] === ">" || source[i] === " ")
-			{
-				foundTag = false;
-				if(tagsCount[currentTag] === undefined)
-				{
-					tagsCount[currentTag] = 1;
-				}
-				else
-				{
-					tagsCount[currentTag]++;
-				}
-				currentTag = "";
-			}
-			else
-			{
-				currentTag = currentTag.concat(source[i]);
-			}
-		}
-	}
+			$('.tooltip').removeClass('open');
+		}, 1500);
+	}});
 }
 
 function addButtons()

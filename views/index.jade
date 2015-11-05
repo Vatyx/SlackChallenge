@@ -4,15 +4,18 @@ html(lang="en")
 		link(href='https://fonts.googleapis.com/css?family=Lato&subset=latin,latin-ext' rel='stylesheet' type='text/css')
 		link(rel="stylesheet" href="../style/animate.min.css")
 		link(rel="stylesheet" href="../style/style.css")
+		meta(name="viewport" content="initial-scale=1")
 		title="Source Highlighter"
 	body
 		.header
 			#title.headeritem Source Highlighter!
 			.style-1.headeritem
 				input#field(type="text" autofocus="autofocus" placeholder="Enter your url here! (e.g. example.com)")
+				.tooltip Whoops! That's not a proper URL!
 			#submit.mybtn.unselectable.headeritem(onclick="getSource()") Get the Source!
 		#buttonContainer.box.tags
 		#codehere.box
+			pre#precode
 		
 		script(src='https://code.jquery.com/jquery-2.1.4.min.js')
 		script(src='../scripts/highlight.js')
