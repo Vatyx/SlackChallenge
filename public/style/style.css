@@ -213,13 +213,22 @@ input[type="text"] {
           appearance: none;
   box-shadow: none;
   border-radius: none;
+  margin-top: 10px;
 }
+
+/*@media only screen and (max-width: 568px)
+{
+	input[type="text"] {
+		width: 40%;
+	}
+}*/
+
 input[type="text"]:focus {
   outline: none;
 }
 
 .style-1 input[type="text"] {
-	min-width: 400px;
+	min-width: 350px;
 	padding: 10px;
 	border: solid 1px #dcdcdc;
 	-webkit-transition: box-shadow 0.3s, border 0.3s;
