@@ -48,7 +48,7 @@ function getSource()
 				$('.box').addClass('animated bounceInLeft');
 				//scroll down for the user
 				$('body,html').animate({scrollTop: $('#buttonContainer').position().top +50}, 500);
-			}, 500);
+			}, 700);
 		}
 	},
 	//unsucessful request
