@@ -3,35 +3,37 @@ var tagsCount = {};
 
 $("#field").keyup(function(event){
     if(event.keyCode === 13){
-    	console.log("I'm in here");
         $("#submit").click();
     }
 });
 
 function getSource()
 {
-	if(!$('.box').hasClass('open'))
-	{
-		$('.header').addClass('moveup');
-		$('.box').addClass('open');
-	}
-	else
-	{
-		//$('.box').addClass('rotate');
-	}
-		
+
 	$.ajax({url: "/query", data: {url: $("#field").val()}, success: function(data, status)
 	{
+
+		if(!$('.box').hasClass('open'))
+		{
+			$('.header').addClass('moveup');
+			$('.box').addClass('open'); 
+		}
+		else
+		{
+			
+		}
+
 		source = data.body;
-		console.log(source);
 		$('#codehere').text(source);
 		tagsCount = data.count;
 		addButtons();
-		$('body,html').animate({scrollTop: 156}, 800); 
+		$('body,html').animate({scrollTop: $('#buttonContainer').position().top +50}, 500);
 	}, 
 	error: function()
 	{
 		console.log("Oh shucks an error");
+		// $('#field').get(0).type = "textwrong";
+		// setTimeout(function() { $('#field').get(0).type = "text"; },1000);
 	}});
 }
 

@@ -54,7 +54,6 @@ function computeTagsCount(source)
 	var mine = alpha.exec(source);
 	while(mine != null)
 	{
-		console.log(mine[1]);
 		if(tagsCount[mine[1]] === undefined)
 		{
 			tagsCount[mine[1]] = 1;

@@ -16,6 +16,20 @@ html,body {
 	background-color: white;
 }
 
+@media only screen and (max-width: 1270px)
+{
+	.header {
+		transform: translateY(-26%);
+	}
+}
+
+@media only screen and (max-width: 568px)
+{
+	.header {
+		transform: translateY(-16%);
+	}
+}
+
 .box {
 	visibility: hidden;
 	opacity: 0;
@@ -83,6 +97,7 @@ html,body {
 
 .tagButton:hover {
 	transform: scale(1.1);
+	font-size: 50px;
 }
 
 .highlight {
@@ -176,4 +191,49 @@ input[type="text"]:focus {
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+[data-tip] {
+	position:relative;
+
+}
+[data-tip]:before {
+	content:'';
+	/* hides the tooltip when not hovered */
+	display:block;
+	content:'';
+	border-left: 5px solid transparent;
+	border-right: 5px solid transparent;
+	border-bottom: 5px solid #e74c3c;	
+	position:absolute;
+	top:30px;
+	left:35px;
+	z-index:8;
+	font-size:0;
+	line-height:0;
+	width:0;
+	height:0;
+}
+[data-tip]:after {
+	display:block;
+	content:attr(data-tip);
+	position:absolute;
+	top:35px;
+	left:0px;
+	padding:5px 8px;
+	background:#e74c3c;
+	color:#fff;
+	z-index:9;
+	font-size: 1em;
+	height:25px;
+	line-height:18px;
+	-webkit-border-radius: 3px;
+	-moz-border-radius: 3px;
+	border-radius: 3px;
+	white-space:nowrap;
+	word-wrap:normal;
+}
+[data-tip]:hover:before,
+[data-tip]:hover:after {
+	display:block;
 }
