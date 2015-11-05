@@ -13,7 +13,7 @@ app.set('view engine', 'jade');
 app.get('/', function(req, res)
 {
 	console.log("In base");
-	res.render('test.jade');
+	res.render('index.jade');
 });
 
 app.get('/query', function(req, res)
